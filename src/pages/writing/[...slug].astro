@@ -1,4 +1,5 @@
 ---
+import Footer from "@/components/footer.astro";
 import Meta from "@/components/meta.astro";
 import Nav from "@/components/nav.astro";
 import Layout from "@/layouts/layout.astro";
@@ -57,5 +58,8 @@ const { Content } = await post.render();
     <article>
       <Content />
     </article>
+  </Fragment>
+  <Fragment slot="footer">
+    <Footer />
   </Fragment>
 </Layout>

@@ -8,52 +8,30 @@ const latestWriting = await getLatestWritings();
 
 <Layout>
   <Fragment slot="header">
-    <div
-      class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6"
-    >
-      <h1 class="text-2xl font-semibold text-gray-900 mb-2 sm:mb-0">
-        Krzysztof Żuraw
-      </h1>
+    <div class="site-header">
+      <h1>Krzysztof Żuraw</h1>
       <nav>
-        <ul class="flex space-x-6">
-          <Link
-            href="/writing"
-            class="text-gray-600 hover:text-gray-900 transition-colors"
-            >Writing</Link
-          >
-          <Link
-            href="/about"
-            class="text-gray-600 hover:text-gray-900 transition-colors"
-            >About</Link
-          >
-          <Link
-            href="/rss.xml"
-            class="text-gray-600 hover:text-gray-900 transition-colors"
-            >RSS</Link
-          >
+        <ul>
+          <Link href="/writing">Writing</Link>
+          <Link href="/about">About</Link>
+          <Link href="/rss.xml">RSS</Link>
         </ul>
       </nav>
     </div>
-    <p class="text-gray-700 leading-relaxed">
+    <p class="bio">
       I'm a fullstack developer. I work at{" "}
-      <Link href="https://saleor.io/" class="text-blue-600 hover:text-blue-700"
-        >Saleor</Link
-      >where I build an open-source e-commerce platform.
+      <Link href="https://saleor.io/">Saleor</Link> where I build an open-source e-commerce
+      platform.
     </p>
   </Fragment>
   <Fragment slot="content">
-    <section class="mb-12">
-      <h2 class="text-lg font-medium text-gray-900 mb-6">Latest writing</h2>
-      <ul class="space-y-3">
+    <section>
+      <h2 class="section-title">Latest writing</h2>
+      <ul class="article-list">
         {
           latestWriting.map((post) => (
             <li>
-              <Link
-                href={`/writing/${post.slug}`}
-                class="text-blue-600 hover:text-blue-700 transition-colors"
-              >
-                {post.data.title}
-              </Link>
+              <Link href={`/writing/${post.slug}`}>{post.data.title}</Link>
             </li>
           ))
         }
@@ -61,19 +39,17 @@ const latestWriting = await getLatestWritings();
     </section>
   </Fragment>
   <Fragment slot="footer">
-    <div class="flex space-x-6 justify-between text-sm text-gray-500">
-      &copy; Krzysztof Żuraw
-      <ul class="flex gap-2">
-        <li>
-          <Link href="https://github.com/kzuraw">GitHub</Link>
-        </li>
-        <li>
-          <Link href="https://bsky.app/profile/kzuraw.com">Bluesky</Link>
-        </li>
-        <li>
-          <Link href="https://www.linkedin.com/in/kzuraw">LinkedIn</Link>
-        </li>
-      </ul>
-    </div>
+    <span>&copy; Krzysztof Żuraw</span>
+    <ul>
+      <li>
+        <Link href="https://github.com/kzuraw">GitHub</Link>
+      </li>
+      <li>
+        <Link href="https://bsky.app/profile/kzuraw.com">Bluesky</Link>
+      </li>
+      <li>
+        <Link href="https://www.linkedin.com/in/kzuraw">LinkedIn</Link>
+      </li>
+    </ul>
   </Fragment>
 </Layout>

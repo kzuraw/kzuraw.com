@@ -28,11 +28,11 @@ const { Content } = await post.render();
   <Fragment slot="header">
     <BackHome />
 
-    <div class="prose">
-      <h1>
+    <div class="article-header">
+      <h1 class="article-title">
         {post.data.title}
       </h1>
-      <div class="flex gap-x-2">
+      <div class="article-meta">
         <time datetime={post.data.pubDate?.toISOString()}>
           {
             post.data.pubDate?.toLocaleDateString("en-US", {
@@ -59,9 +59,7 @@ const { Content } = await post.render();
     </div>
   </Fragment>
   <Fragment slot="content">
-    <article
-      class="prose prose-a:text-blue-600 prose-a:hover:text-blue-700 prose-a:no-underline"
-    >
+    <article class="prose">
       <Content />
     </article>
   </Fragment>

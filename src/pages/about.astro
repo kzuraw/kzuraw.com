@@ -12,14 +12,11 @@ import avatarImage from "@/assets/avatar.jpg";
 
   <Fragment slot="header">
     <BackHome />
-
-    <h1 class="text-2xl font-semibold text-gray-900 mb-4">About me</h1>
+    <h1 class="page-title">About me</h1>
   </Fragment>
 
   <Fragment slot="content">
-    <article
-      class="prose prose-a:text-blue-600 prose-a:hover:text-blue-700 prose-a:no-underline"
-    >
+    <article class="prose">
       <Image src={avatarImage} alt="My face" />
       <p>
         I'm a self-taught software engineer, writer passionate about building
@@ -29,19 +26,19 @@ import avatarImage from "@/assets/avatar.jpg";
       </p>
 
       <h2>Experience</h2>
-      <ol class="list-none px-0">
-        <li class="px-0">
+      <ol class="experience-list">
+        <li>
           <h3>Staff Engineer at Saleor Commerce</h3>
-          <p>2022 - Present</p>
+          <p class="experience-date">2022 - Present</p>
           <p>
             Developing of apps and dashboard for Saleor, a headless e-commerce
             platform. Focusing on performance optimization, code quality, and
             team collaboration. Contributing to the open-source community.
           </p>
         </li>
-        <li class="px-0">
+        <li>
           <h3>Team Leader at Ingrid</h3>
-          <p>2018 - 2022</p>
+          <p class="experience-date">2018 - 2022</p>
           <p>
             Leading a team of developers to build a tracking product that
             provides real-time updates and notifications for users. Ensuring the
@@ -49,9 +46,9 @@ import avatarImage from "@/assets/avatar.jpg";
             junior developers and establishing best practices.
           </p>
         </li>
-        <li class="px-0">
+        <li>
           <h3>Python Developer at STXNext</h3>
-          <p>2016 - 2018</p>
+          <p class="experience-date">2016 - 2018</p>
           <p>
             Developing web applications using Python and Django. Working on
             various projects, including e-commerce and content management
@@ -61,14 +58,10 @@ import avatarImage from "@/assets/avatar.jpg";
       </ol>
 
       <h2>Skills & Technologies</h2>
-      <div class="flex flex-wrap gap-2">
+      <div class="skills">
         {
           ["TypeScript", "React", "Next.js", "Python", "Django", "GraphQL"].map(
-            (skill) => (
-              <span class="px-3 py-1 bg-gray-100 text-gray-800 text-sm rounded-full">
-                {skill}
-              </span>
-            ),
+            (skill) => <span class="skill-tag">{skill}</span>,
           )
         }
       </div>

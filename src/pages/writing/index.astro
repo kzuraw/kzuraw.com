@@ -3,17 +3,11 @@ import Footer from "@/components/footer.astro";
 import Link from "@/components/link.astro";
 import Meta from "@/components/meta.astro";
 import Nav from "@/components/nav.astro";
+import { formatDate } from "@/helpers/format-date";
 import { getAllWritings } from "@/helpers/get-all-writings";
 import Layout from "@/layouts/layout.astro";
 
 const writings = await getAllWritings();
-
-const formatDate = (date: Date) => {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-};
 ---
 
 <Layout>

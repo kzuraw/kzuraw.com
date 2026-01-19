@@ -204,15 +204,14 @@ main ul:has(time) {
 
   a {
     display: flex;
-    justify-content: space-between;
     gap: 1rem;
     text-decoration: none;
 
-    span:first-child {
+    span {
       text-decoration: underline;
     }
 
-    &:hover span:first-child {
+    &:hover span {
       text-decoration: none;
     }
   }
@@ -221,6 +220,7 @@ main ul:has(time) {
     color: var(--muted);
     font-size: 0.875rem;
     flex-shrink: 0;
+    font-family: ui-monospace, monospace;
   }
 }
 

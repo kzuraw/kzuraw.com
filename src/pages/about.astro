@@ -12,11 +12,11 @@ import avatarImage from "@/assets/avatar.jpg";
 
   <Fragment slot="header">
     <BackHome />
-    <h1 class="page-title">About me</h1>
+    <h1>About me</h1>
   </Fragment>
 
   <Fragment slot="content">
-    <article class="prose">
+    <article>
       <Image src={avatarImage} alt="My face" />
       <p>
         I'm a self-taught software engineer, writer passionate about building
@@ -26,45 +26,38 @@ import avatarImage from "@/assets/avatar.jpg";
       </p>
 
       <h2>Experience</h2>
-      <ol class="experience-list">
-        <li>
-          <h3>Staff Engineer at Saleor Commerce</h3>
-          <p class="experience-date">2022 - Present</p>
-          <p>
-            Developing of apps and dashboard for Saleor, a headless e-commerce
-            platform. Focusing on performance optimization, code quality, and
-            team collaboration. Contributing to the open-source community.
-          </p>
-        </li>
-        <li>
-          <h3>Team Leader at Ingrid</h3>
-          <p class="experience-date">2018 - 2022</p>
-          <p>
-            Leading a team of developers to build a tracking product that
-            provides real-time updates and notifications for users. Ensuring the
-            product is performant, accessible, and user-friendly. Mentoring
-            junior developers and establishing best practices.
-          </p>
-        </li>
-        <li>
-          <h3>Python Developer at STXNext</h3>
-          <p class="experience-date">2016 - 2018</p>
-          <p>
-            Developing web applications using Python and Django. Working on
-            various projects, including e-commerce and content management
-            systems.
-          </p>
-        </li>
-      </ol>
+      <p>
+        <strong>Staff Engineer at Saleor Commerce</strong><br />
+        <small>2022 - Present</small>
+      </p>
+      <p>
+        Developing of apps and dashboard for Saleor, a headless e-commerce
+        platform. Focusing on performance optimization, code quality, and team
+        collaboration. Contributing to the open-source community.
+      </p>
+
+      <p>
+        <strong>Team Leader at Ingrid</strong><br />
+        <small>2018 - 2022</small>
+      </p>
+      <p>
+        Leading a team of developers to build a tracking product that provides
+        real-time updates and notifications for users. Ensuring the product is
+        performant, accessible, and user-friendly. Mentoring junior developers
+        and establishing best practices.
+      </p>
+
+      <p>
+        <strong>Python Developer at STXNext</strong><br />
+        <small>2016 - 2018</small>
+      </p>
+      <p>
+        Developing web applications using Python and Django. Working on various
+        projects, including e-commerce and content management systems.
+      </p>
 
       <h2>Skills & Technologies</h2>
-      <div class="skills">
-        {
-          ["TypeScript", "React", "Next.js", "Python", "Django", "GraphQL"].map(
-            (skill) => <span class="skill-tag">{skill}</span>,
-          )
-        }
-      </div>
+      <p>TypeScript, React, Next.js, Python, Django, GraphQL</p>
 
       <h2>Outside of work</h2>
       <p>

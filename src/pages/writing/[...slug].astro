@@ -27,12 +27,9 @@ const { Content } = await post.render();
   />
   <Fragment slot="header">
     <BackHome />
-
-    <div class="article-header">
-      <h1 class="article-title">
-        {post.data.title}
-      </h1>
-      <div class="article-meta">
+    <h1>{post.data.title}</h1>
+    <p>
+      <small>
         <time datetime={post.data.pubDate?.toISOString()}>
           {
             post.data.pubDate?.toLocaleDateString("en-US", {
@@ -45,21 +42,19 @@ const { Content } = await post.render();
         {
           post.data.source?.url && (
             <>
-              <span>•</span>
-              <span>
-                Originally published at{" "}
-                <a href={post.data.source.url}>
-                  {new URL(post.data.source.url).host}
-                </a>
-              </span>
+              {" · "}
+              Originally published at{" "}
+              <a href={post.data.source.url}>
+                {new URL(post.data.source.url).host}
+              </a>
             </>
           )
         }
-      </div>
-    </div>
+      </small>
+    </p>
   </Fragment>
   <Fragment slot="content">
-    <article class="prose">
+    <article>
       <Content />
     </article>
   </Fragment>

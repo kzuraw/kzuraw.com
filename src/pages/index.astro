@@ -8,26 +8,26 @@ const latestWriting = await getLatestWritings();
 
 <Layout>
   <Fragment slot="header">
-    <div class="site-header">
-      <h1>Krzysztof Żuraw</h1>
-      <nav>
-        <ul>
-          <Link href="/writing">Writing</Link>
-          <Link href="/about">About</Link>
-          <Link href="/rss.xml">RSS</Link>
-        </ul>
-      </nav>
-    </div>
-    <p class="bio">
-      I'm a fullstack developer. I work at{" "}
-      <Link href="https://saleor.io/">Saleor</Link> where I build an open-source e-commerce
-      platform.
+    <h1>Krzysztof Żuraw</h1>
+    <nav>
+      <ul>
+        <Link href="/writing">Writing</Link>
+        <Link href="/about">About</Link>
+        <Link href="/rss.xml">RSS</Link>
+      </ul>
+    </nav>
+    <p>
+      <small>
+        I'm a fullstack developer. I work at{" "}
+        <Link href="https://saleor.io/">Saleor</Link> where I build an open-source
+        e-commerce platform.
+      </small>
     </p>
   </Fragment>
   <Fragment slot="content">
     <section>
-      <h2 class="section-title">Latest writing</h2>
-      <ul class="article-list">
+      <h2>Latest writing</h2>
+      <ul>
         {
           latestWriting.map((post) => (
             <li>

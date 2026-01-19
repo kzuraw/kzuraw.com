@@ -12,38 +12,33 @@ const writingsByYear = await getWritingsByYear();
   <Meta title="Writing" slot="meta" />
   <Fragment slot="header">
     <BackHome />
-
-    <div>
-      <h1 class="page-title">Writing Archives</h1>
-      <p class="page-description">All articles organized by date.</p>
-    </div>
+    <h1>Writing Archives</h1>
+    <p><small>All articles organized by date.</small></p>
   </Fragment>
   <Fragment slot="content">
-    <div>
-      {
-        writingsByYear.map(([year, posts]) => (
-          <section class="year-group">
-            <h2 class="year-title">{year}</h2>
-            <ul class="article-list">
-              {posts.map((post) => (
-                <li>
-                  <Link href={`/writing/${post.slug}`}>
-                    <span>{post.data.title}</span>
-                    {post.data.pubDate && (
-                      <time>
-                        {new Date(post.data.pubDate).toLocaleDateString(
-                          "en-US",
-                          { month: "short", day: "numeric" },
-                        )}
-                      </time>
-                    )}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))
-      }
-    </div>
+    {
+      writingsByYear.map(([year, posts]) => (
+        <section>
+          <h2>{year}</h2>
+          <ul>
+            {posts.map((post) => (
+              <li>
+                <Link href={`/writing/${post.slug}`}>
+                  <span>{post.data.title}</span>
+                  {post.data.pubDate && (
+                    <time>
+                      {new Date(post.data.pubDate).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </time>
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
   </Fragment>
 </Layout>

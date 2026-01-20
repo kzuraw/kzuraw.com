@@ -1,11 +1,13 @@
 ---
+import Footer from "@/components/footer.astro";
 import Link from "@/components/link.astro";
 import Meta from "@/components/meta.astro";
 import Nav from "@/components/nav.astro";
-import { getWritingsByYear } from "@/helpers/get-writings-by-year";
+import { formatDate } from "@/helpers/format-date";
+import { getAllWritings } from "@/helpers/get-all-writings";
 import Layout from "@/layouts/layout.astro";
 
-const writingsByYear = await getWritingsByYear();
+const writings = await getAllWritings();
 ---
 
 <Layout>
@@ -16,29 +18,22 @@ const writingsByYear = await getWritingsByYear();
     <p><small>All articles organized by date.</small></p>
   </Fragment>
   <Fragment slot="content">
-    {
-      writingsByYear.map(([year, posts]) => (
-        <section>
-          <h2>{year}</h2>
-          <ul>
-            {posts.map((post) => (
-              <li>
-                <Link href={`/writing/${post.slug}`}>
-                  <span>{post.data.title}</span>
-                  {post.data.pubDate && (
-                    <time>
-                      {new Date(post.data.pubDate).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                      })}
-                    </time>
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))
-    }
+    <ul>
+      {
+        writings.map((post) => (
+          <li>
+            <Link href={`/writing/${post.slug}`}>
+              {post.data.pubDate && (
+                <time>{formatDate(post.data.pubDate)}</time>
+              )}
+              <span>{post.data.title}</span>
+            </Link>
+          </li>
+        ))
+      }
+    </ul>
+  </Fragment>
+  <Fragment slot="footer">
+    <Footer />
   </Fragment>
 </Layout>

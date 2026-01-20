@@ -1,4 +1,5 @@
 ---
+import Footer from "@/components/footer.astro";
 import Meta from "@/components/meta.astro";
 import Nav from "@/components/nav.astro";
 import Layout from "@/layouts/layout.astro";
@@ -14,5 +15,8 @@ import Layout from "@/layouts/layout.astro";
     <Nav />
     <h1>Page not found</h1>
     <p><small>The page you're looking for doesn't exist.</small></p>
+  </Fragment>
+  <Fragment slot="footer">
+    <Footer />
   </Fragment>
 </Layout>

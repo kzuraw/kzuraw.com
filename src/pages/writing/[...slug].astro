@@ -1,6 +1,7 @@
 ---
 import Meta from "@/components/meta.astro";
 import Navbar from "@/components/navbar.astro";
+import PostDate from "@/components/post-date.astro";
 import Layout from "@/layouts/layout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
@@ -32,15 +33,7 @@ const { Content } = await post.render();
         {post.data.title}
       </h1>
       <div class="flex gap-x-2">
-        <time datetime={post.data.pubDate?.toISOString()}>
-          {
-            post.data.pubDate?.toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })
-          }
-        </time>
+        {post.data.pubDate && <PostDate date={post.data.pubDate} format="long" />}
         {
           post.data.source?.url && (
             <>

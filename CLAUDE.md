@@ -11,5 +11,5 @@ pnpm dev          # Start development server
 pnpm build        # Production build (includes type checking)
 pnpm lint         # Run Astro type checking
 pnpm preview      # Preview production build
-pnpm post-create  # Scaffold a new blog post
+pnpm create-post  # Scaffold a new blog post
 ```

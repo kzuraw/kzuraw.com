@@ -1,23 +1,79 @@
 ---
-import Footer from "@/components/footer.astro";
-import Nav from "@/components/nav.astro";
+import Link from "@/components/link.astro";
+import { getLatestWritings } from "@/helpers/get-latest-writing";
 import Layout from "@/layouts/layout.astro";
+
+const latestWriting = await getLatestWritings();
 ---
 
 <Layout>
   <Fragment slot="header">
-    <Nav />
-    <h1>Krzysztof Żuraw</h1>
-    <p>
-      <small>
-        I'm a self-taught software engineer, writer passionate about building
-        products that solve real problems. With over 9 years of experience in
-        web development, I specialize in creating performant and accessible
-        applications using modern technologies.
-      </small>
+    <div
+      class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6"
+    >
+      <h1 class="text-2xl font-semibold text-gray-900 mb-2 sm:mb-0">
+        Krzysztof Żuraw
+      </h1>
+      <nav>
+        <ul class="flex space-x-6">
+          <Link
+            href="/writing"
+            class="text-gray-600 hover:text-gray-900 transition-colors"
+            >Writing</Link
+          >
+          <Link
+            href="/about"
+            class="text-gray-600 hover:text-gray-900 transition-colors"
+            >About</Link
+          >
+          <Link
+            href="/rss.xml"
+            class="text-gray-600 hover:text-gray-900 transition-colors"
+            >RSS</Link
+          >
+        </ul>
+      </nav>
+    </div>
+    <p class="text-gray-700 leading-relaxed">
+      I'm a fullstack developer. I work at{" "}
+      <Link href="https://saleor.io/" class="text-blue-600 hover:text-blue-700"
+        >Saleor</Link
+      >where I build an open-source e-commerce platform.
     </p>
   </Fragment>
+  <Fragment slot="content">
+    <section class="mb-12">
+      <h2 class="text-lg font-medium text-gray-900 mb-6">Latest writing</h2>
+      <ul class="space-y-3">
+        {
+          latestWriting.map((post) => (
+            <li>
+              <Link
+                href={`/writing/${post.slug}`}
+                class="text-blue-600 hover:text-blue-700 transition-colors"
+              >
+                {post.data.title}
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </Fragment>
   <Fragment slot="footer">
-    <Footer />
+    <div class="flex space-x-6 justify-between text-sm text-gray-500">
+      &copy; Krzysztof Żuraw
+      <ul class="flex gap-2">
+        <li>
+          <Link href="https://github.com/kzuraw">GitHub</Link>
+        </li>
+        <li>
+          <Link href="https://bsky.app/profile/kzuraw.com">Bluesky</Link>
+        </li>
+        <li>
+          <Link href="https://www.linkedin.com/in/kzuraw">LinkedIn</Link>
+        </li>
+      </ul>
+    </div>
   </Fragment>
 </Layout>

@@ -2,10 +2,11 @@
 import Link from "@/components/link.astro";
 import Meta from "@/components/meta.astro";
 import Navbar from "@/components/navbar.astro";
-import { getWritingsByYear } from "@/helpers/get-writings-by-year";
+import PostDate from "@/components/post-date.astro";
+import { getAllWritings } from "@/helpers/get-all-writings";
 import Layout from "@/layouts/layout.astro";
 
-const writingsByYear = await getWritingsByYear();
+const posts = await getAllWritings();
 ---
 
 <Layout>
@@ -20,32 +21,26 @@ const writingsByYear = await getWritingsByYear();
     </div>
   </Fragment>
   <Fragment slot="content">
-    <div class="space-y-12">
+    <ul class="space-y-5">
       {
-        writingsByYear.map(([year, posts]) => (
-          <section>
-            <h2 class="text-lg font-medium text-gray-900 mb-6">{year}</h2>
-            <ul class="space-y-5">
-              {posts.map((post) => (
-                <li class="group">
-                  <Link href={`/writing/${post.slug}`} class="block">
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
-                      <h3 class="group-hover:opacity-70 transition-opacity">
-                        {post.data.title}
-                      </h3>
-                      {post.data.pubDate && (
-                        <time class="text-sm text-gray-500 sm:shrink-0 sm:ml-4">
-                          {new Date(post.data.pubDate).toISOString().slice(0, 10)}
-                        </time>
-                      )}
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
+        posts.map((post) => (
+          <li class="group">
+            <Link href={`/writing/${post.slug}`} class="block">
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                <h3 class="group-hover:opacity-70 transition-opacity">
+                  {post.data.title}
+                </h3>
+                {post.data.pubDate && (
+                  <PostDate
+                    date={post.data.pubDate}
+                    class="text-sm text-gray-500 sm:shrink-0 sm:ml-4"
+                  />
+                )}
+              </div>
+            </Link>
+          </li>
         ))
       }
-    </div>
+    </ul>
   </Fragment>
 </Layout>

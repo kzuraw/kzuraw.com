@@ -1,6 +1,7 @@
 ---
 import Link from "@/components/link.astro";
 import Navbar from "@/components/navbar.astro";
+import PostDate from "@/components/post-date.astro";
 import { getLatestWritings } from "@/helpers/get-latest-writing";
 import Layout from "@/layouts/layout.astro";
 
@@ -30,9 +31,10 @@ const latestWriting = await getLatestWritings();
                     {post.data.title}
                   </span>
                   {post.data.pubDate && (
-                    <time class="text-sm text-gray-500 sm:shrink-0 sm:ml-4">
-                      {new Date(post.data.pubDate).toISOString().slice(0, 10)}
-                    </time>
+                    <PostDate
+                      date={post.data.pubDate}
+                      class="text-sm text-gray-500 sm:shrink-0 sm:ml-4"
+                    />
                   )}
                 </div>
               </Link>

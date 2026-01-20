@@ -1,0 +1,25 @@
+---
+interface Props {
+  date: Date;
+  format?: "short" | "long";
+  class?: string;
+}
+
+const { date, format = "short", class: className } = Astro.props;
+
+const formattedDate =
+  format === "short"
+    ? date.toISOString().slice(0, 10)
+    : date.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      });
+---
+
+<time
+  datetime={date.toISOString()}
+  class:list={["tabular-nums", className]}
+>
+  {formattedDate}
+</time>

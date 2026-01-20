@@ -1,9 +1,9 @@
 ---
-import Link from "@/components/link.astro";
-import Navbar from "@/components/navbar.astro";
-import PostDate from "@/components/post-date.astro";
+import Link from "@/components/Link.astro";
+import Navbar from "@/components/Navbar.astro";
+import PostDate from "@/components/PostDate.astro";
 import { getLatestWritings } from "@/helpers/get-latest-writing";
-import Layout from "@/layouts/layout.astro";
+import Layout from "@/layouts/Layout.astro";
 
 const latestWriting = await getLatestWritings();
 ---

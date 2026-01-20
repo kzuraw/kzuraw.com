@@ -14,6 +14,11 @@ const isActive =
   (normalizedHref !== "/" && normalizedCurrentPath.startsWith(normalizedHref));
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a
+  href={href}
+  class:list={[className, { current: isActive }]}
+  aria-current={isActive ? "page" : undefined}
+  {...props}
+>
   <slot />
 </a>

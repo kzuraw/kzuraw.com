@@ -29,6 +29,9 @@ importers:
       sharp:
         specifier: 0.34.5
         version: 0.34.5
+      simpledotcss:
+        specifier: 2.3.7
+        version: 2.3.7
     devDependencies:
       '@astrojs/check':
         specifier: 0.9.6
@@ -1874,6 +1877,9 @@ packages:
   signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
+
+  simpledotcss@2.3.7:
+    resolution: {integrity: sha512-Ag3TpigN7725AnvgwyGkErd50SuYmlDQRU+9LLNHUIK8T4DUEWPHut6GpD1ivxARrBd8eYGTL8vzKazVFYUpQg==}
 
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
@@ -4435,6 +4441,8 @@ snapshots:
       '@types/hast': 3.0.4
 
   signal-exit@4.1.0: {}
+
+  simpledotcss@2.3.7: {}
 
   sisteransi@1.0.5: {}
 

@@ -1,4 +1,5 @@
 ---
+import Article from "@/components/Article.astro";
 import PostDate from "@/components/PostDate.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getBlogPosts } from "@/lib/collections";
@@ -8,7 +9,7 @@ const mostRecentPosts = await getBlogPosts(3);
 
 <Layout>
   <Fragment slot="content">
-    <article class="prose prose-a:underline prose-a:font-normal max-w-none">
+    <Article>
       <p>
         Hey! I'm Krzysztof. Welcome to my blog. I'm a fullstack engineer working
         with TypeScript and Python. You can check out my code on <a
@@ -17,7 +18,7 @@ const mostRecentPosts = await getBlogPosts(3);
           >LinkedIn</a
         >. When I'm not coding, you'll find me brewing coffee with a V60.
       </p>
-    </article>
+    </Article>
     <section class="mt-12">
       <h2 class="text-lg font-bold text-gray-900 mb-2">Most recent 3 posts</h2>
       <ul class="space-y-5">

@@ -17,24 +17,14 @@ import "@/styles/global.css";
         <nav
           class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6"
         >
-          <a
-            href="/"
-            class="text-2xl font-semibold text-gray-900 mb-2 sm:mb-0 hover:opacity-70 transition-opacity"
-          >
-            Krzysztof Żuraw
-          </a>
+          <p class="text-2xl font-semibold text-gray-900">Krzysztof Żuraw</p>
           <ul class="flex space-x-6">
             <li>
               <a href="/" class="hover:opacity-70 transition-opacity">Home</a>
             </li>
             <li>
-              <a href="/writing" class="hover:opacity-70 transition-opacity"
-                >Writing</a
-              >
-            </li>
-            <li>
-              <a href="/about" class="hover:opacity-70 transition-opacity"
-                >About</a
+              <a href="/blog" class="hover:opacity-70 transition-opacity"
+                >Blog</a
               >
             </li>
             <li>
@@ -48,22 +38,6 @@ import "@/styles/global.css";
       <main>
         <slot name="content" />
       </main>
-      <footer>
-        <div class="flex space-x-6 justify-between text-sm text-gray-500 mt-6">
-          &copy; Krzysztof Żuraw
-          <ul class="flex gap-2">
-            <li>
-              <a href="https://github.com/kzuraw">GitHub</a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/kzuraw.com">Bluesky</a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/kzuraw">LinkedIn</a>
-            </li>
-          </ul>
-        </div>
-      </footer>
     </div>
   </body>
 </html>

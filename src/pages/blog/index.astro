@@ -1,26 +1,26 @@
 ---
 import Meta from "@/components/Meta.astro";
 import PostDate from "@/components/PostDate.astro";
-import { getLatestWritings } from "@/helpers/writings";
 import Layout from "@/layouts/Layout.astro";
+import { getBlogPosts } from "@/lib/collections";
 
-const posts = await getLatestWritings();
+const posts = await getBlogPosts();
 ---
 
 <Layout>
-  <Meta title="Writing" slot="meta" />
+  <Meta title="Blog" slot="meta" />
   <Fragment slot="content">
-    <h1 class="text-2xl font-semibold text-gray-900 mb-4">Writing Archives</h1>
+    <h1 class="text-2xl font-semibold text-gray-900 mb-4">All posts</h1>
     <ul class="space-y-5">
       {
         posts.map((post) => (
           <li class="group">
-            <a href={`/writing/${post.slug}`} class="block">
+            <a href={post.urlPath} class="block">
               <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
                 <h3 class="group-hover:opacity-70 transition-opacity">
                   {post.data.title}
                 </h3>
-                {post.data.pubDate && <PostDate date={post.data.pubDate} />}
+                <PostDate date={post.data.pubDate} />
               </div>
             </a>
           </li>

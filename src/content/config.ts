@@ -1,8 +1,10 @@
 import { rssSchema } from "@astrojs/rss";
-import { defineCollection } from "astro:content";
+import { defineCollection, z } from "astro:content";
 
-const writing = defineCollection({
-  schema: rssSchema,
+const blog = defineCollection({
+  schema: rssSchema.extend({
+    pubDate: z.coerce.date(),
+  }),
 });
 
-export const collections = { writing };
+export const collections = { blog };

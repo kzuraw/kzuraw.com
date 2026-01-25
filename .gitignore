@@ -1,15 +1,5 @@
-# build output
-dist/
-.vercel/
-
-# generated types
 .astro/
-
-# dependencies
-node_modules/
-
-# logs
-pnpm-debug.log*
-
-# macOS-specific files
 .DS_Store
+dist/
+node_modules/
+pnpm-debug.log*

@@ -1,25 +1,30 @@
 ---
 import PostDate from "@/components/PostDate.astro";
-import { getLatestWritings } from "@/helpers/writings";
 import Layout from "@/layouts/Layout.astro";
+import { getBlogPosts } from "@/lib/collections";
 
-const latestWriting = await getLatestWritings(3);
+const mostRecentPosts = await getBlogPosts(3);
 ---
 
 <Layout>
   <Fragment slot="content">
-    <p class="text-gray-700 leading-relaxed mb-3">
-      I'm a fullstack developer. I work at
-      <a href="https://saleor.io/" class="underline hover:opacity-70">Saleor</a
-      >{" "}where I build an open-source e-commerce platform.
-    </p>
-    <section class="mb-12">
-      <h2 class="text-lg font-medium text-gray-900 mb-6">Latest writing</h2>
+    <article class="prose prose-a:underline prose-a:font-normal max-w-none">
+      <p>
+        Hey! I'm Krzysztof. Welcome to my blog. I'm a fullstack engineer working
+        with TypeScript and Python. You can check out my code on <a
+          href="https://github.com/kzuraw">GitHub</a
+        >, or follow me on <a href="https://www.linkedin.com/in/kzuraw"
+          >LinkedIn</a
+        >. When I'm not coding, you'll find me brewing coffee with a V60.
+      </p>
+    </article>
+    <section class="mt-12">
+      <h2 class="text-lg font-bold text-gray-900 mb-2">Most recent 3 posts</h2>
       <ul class="space-y-5">
         {
-          latestWriting.map((post) => (
+          mostRecentPosts.map((post) => (
             <li class="group">
-              <a href={`/writing/${post.slug}`} class="block">
+              <a href={post.urlPath} class="block">
                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
                   <span class="group-hover:opacity-70 transition-opacity">
                     {post.data.title}

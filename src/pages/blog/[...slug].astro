@@ -5,14 +5,14 @@ import Layout from "@/layouts/Layout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("writing");
+  const posts = await getCollection("blog");
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: post,
   }));
 }
 
-type Props = CollectionEntry<"writing">;
+type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
@@ -25,7 +25,7 @@ const { Content } = await post.render();
     slot="meta"
   />
   <Fragment slot="content">
-    <article class="prose prose-a:underline prose-a:hover:opacity-70">
+    <article class="prose prose-a:underline prose-a:font-normal">
       <h1>
         {post.data.title}
       </h1>

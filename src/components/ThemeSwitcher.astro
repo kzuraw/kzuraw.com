@@ -15,46 +15,26 @@
 </label>
 
 <script>
+  import {
+    getStoredTheme,
+    setThemePreference,
+    listenForSystemThemeChanges,
+  } from "@/lib/theme";
+
   const switcher = document.getElementById(
     "theme-switcher",
   ) as HTMLSelectElement;
 
-  function getStoredTheme(): string {
-    if ("theme" in localStorage) {
-      return localStorage.theme;
-    }
-    return "system";
-  }
-
-  function applyTheme() {
-    const isDark =
-      localStorage.theme === "dark" ||
-      (localStorage.theme !== "light" &&
-        !("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    document.documentElement.dataset.theme = isDark ? "dark" : "light";
-  }
-
-  // Initialize switcher value
+  // Initialize dropdown to match stored preference
   switcher.value = getStoredTheme();
 
-  // Handle theme changes
-  switcher.addEventListener("change", (e) => {
-    const newTheme = (e.target as HTMLSelectElement).value;
-    if (newTheme === "system") {
-      localStorage.removeItem("theme");
-    } else {
-      localStorage.theme = newTheme;
-    }
-    applyTheme();
+  // Handle user theme selection
+  switcher.addEventListener("change", (event) => {
+    const target = event.target as HTMLSelectElement;
+    const selectedTheme = target.value as "system" | "light" | "dark";
+    setThemePreference(selectedTheme);
   });
 
-  // Listen for system theme changes (only applies when using "system" mode)
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", () => {
-      if (!("theme" in localStorage)) {
-        applyTheme();
-      }
-    });
+  // React to system theme changes when in "system" mode
+  listenForSystemThemeChanges();
 </script>

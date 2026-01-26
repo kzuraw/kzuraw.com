@@ -12,11 +12,28 @@ import "@/styles/global.css";
       <Meta title="Krzysztof Żuraw" />
     </slot>
     <script is:inline>
-      const isDark =
-        localStorage.theme === "dark" ||
-        (localStorage.theme !== "light" &&
-          !("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches);
+      // Determine theme before page renders to prevent flash of wrong theme
+      // Note: This logic is duplicated from src/lib/theme.ts because
+      // is:inline scripts cannot import modules
+
+      const storedTheme = localStorage.theme;
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+
+      let isDark = false;
+
+      if (storedTheme === "dark") {
+        // User explicitly chose dark mode
+        isDark = true;
+      } else if (storedTheme === "light") {
+        // User explicitly chose light mode
+        isDark = false;
+      } else {
+        // No preference stored - follow system preference
+        isDark = systemPrefersDark;
+      }
+
       document.documentElement.dataset.theme = isDark ? "dark" : "light";
     </script>
   </head>

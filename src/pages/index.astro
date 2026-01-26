@@ -11,16 +11,17 @@ const mostRecentPosts = await getBlogPosts(3);
   <Fragment slot="content">
     <Article>
       <p>
-        Hey! I'm Krzysztof. Welcome to my blog. I'm a fullstack software engineer working
-        with TypeScript and Python. You can check out my code on <a
-          href="https://github.com/kzuraw">GitHub</a
-        >, or follow me on <a href="https://www.linkedin.com/in/kzuraw"
-          >LinkedIn</a
+        Hey! I'm Krzysztof. Welcome to my blog. I'm a fullstack software
+        engineer working with TypeScript and Python. You can check out my code
+        on <a href="https://github.com/kzuraw">GitHub</a>, or follow me on <a
+          href="https://www.linkedin.com/in/kzuraw">LinkedIn</a
         >. When I'm not coding, you'll find me brewing coffee with a V60.
       </p>
     </Article>
     <section class="mt-12">
-      <h2 class="text-lg font-bold text-gray-900 mb-2">Most recent 3 posts</h2>
+      <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
+        Most recent 3 posts
+      </h2>
       <ul class="space-y-5">
         {
           mostRecentPosts.map((post) => (

@@ -10,14 +10,35 @@ import "@/styles/global.css";
     <slot name="meta">
       <Meta title="Krzysztof Żuraw" />
     </slot>
+    <script is:inline>
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          if (e.matches) {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        });
+    </script>
   </head>
-  <body class="min-h-screen bg-white">
+  <body
+    class="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"
+  >
     <div class="max-w-2xl mx-auto px-6 py-16">
       <header class="mb-12">
         <nav
           class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6"
         >
-          <p class="text-2xl font-semibold text-gray-900">Krzysztof Żuraw</p>
+          <p class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+            Krzysztof Żuraw
+          </p>
           <ul class="flex space-x-6">
             <li>
               <a href="/" class="hover:opacity-70 transition-opacity">Home</a>

@@ -12,14 +12,12 @@ import "@/styles/global.css";
       <Meta title="Krzysztof Żuraw" />
     </slot>
     <script is:inline>
-      (function () {
-        const theme = localStorage.getItem("theme") || "system";
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        const isDark = theme === "dark" || (theme === "system" && prefersDark);
-        if (isDark) document.documentElement.classList.add("dark");
-      })();
+      document.documentElement.classList.toggle(
+        "dark",
+        localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches),
+      );
     </script>
   </head>
   <body

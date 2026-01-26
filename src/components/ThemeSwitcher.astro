@@ -17,40 +17,37 @@
   ) as HTMLSelectElement;
 
   function getStoredTheme(): string {
-    return localStorage.getItem("theme") || "system";
-  }
-
-  function applyTheme(theme: string) {
-    const root = document.documentElement;
-
-    if (theme === "system") {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-      root.classList.toggle("dark", prefersDark);
-    } else {
-      root.classList.toggle("dark", theme === "dark");
+    if ("theme" in localStorage) {
+      return localStorage.theme;
     }
+    return "system";
   }
 
-  // Initialize switcher value and apply theme
-  const storedTheme = getStoredTheme();
-  switcher.value = storedTheme;
-  applyTheme(storedTheme);
+  function applyTheme() {
+    document.documentElement.classList.toggle(
+      "dark",
+      localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches),
+    );
+  }
+
+  // Initialize switcher value
+  switcher.value = getStoredTheme();
 
   // Handle theme changes
   switcher.addEventListener("change", (e) => {
     const newTheme = (e.target as HTMLSelectElement).value;
-    localStorage.setItem("theme", newTheme);
-    applyTheme(newTheme);
+    if (newTheme === "system") {
+      localStorage.removeItem("theme");
+    } else {
+      localStorage.theme = newTheme;
+    }
+    applyTheme();
   });
 
   // Listen for system theme changes
   window
     .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", () => {
-      if (getStoredTheme() === "system") {
-        applyTheme("system");
-      }
-    });
+    .addEventListener("change", applyTheme);
 </script>

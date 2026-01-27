@@ -1,6 +1,6 @@
-# kzuraw.com
+# Blog
 
-This repository contains code & writings for my [webpage](https://kzuraw.com).
+This repository contains code & posts for my [blog](https://kzuraw.com).
 
 ## How to run
 
@@ -22,7 +22,7 @@ Run production build:
 pnpm build
 ```
 
-Generate an empty post with required frontmatter
+Generate an empty post with required frontmatter:
 
 ```shell
 pnpm create-post

@@ -7,7 +7,7 @@
   "scripts": {
     "astro": "astro",
     "build": "astro check && astro build",
-    "create-post": "./scripts/create-post.sh",
+    "create-post": "node scripts/create-post.ts",
     "dev": "astro dev",
     "knip": "knip",
     "lint": "astro check",
